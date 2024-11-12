@@ -1,0 +1,7 @@
+../Core/Src/Stepper_Motor_P.c:20:6:Frequency_Out	1
+../Core/Src/Stepper_Motor_P.c:28:10:Frequency_To_Period	1
+../Core/Src/Stepper_Motor_P.c:33:6:Period_Out	1
+../Core/Src/Stepper_Motor_P.c:41:6:Mototr_Poz_Inc	2
+../Core/Src/Stepper_Motor_P.c:49:6:Ramp	5
+../Core/Src/Stepper_Motor_P.c:71:6:Ramp_Out	2
+../Core/Src/Stepper_Motor_P.c:85:6:move	7

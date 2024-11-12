@@ -1,0 +1,3 @@
+Core/Src/ESP8266EX_WIFI_P.o: ../Core/Src/ESP8266EX_WIFI_P.c \
+ ../Core/Inc/ESP8266EX_WIFI_P.h
+../Core/Inc/ESP8266EX_WIFI_P.h:
