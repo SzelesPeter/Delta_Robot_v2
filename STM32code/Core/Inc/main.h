@@ -42,6 +42,8 @@ extern "C" {
 #include "Bill_Matrix_P.h"
 #include "HD44780U_P.h"
 #include "SSD1306_OLED_P.h"
+#include "PID.h"
+#include "Menu_P.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

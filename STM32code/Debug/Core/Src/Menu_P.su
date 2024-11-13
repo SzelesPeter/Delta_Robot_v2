@@ -1,0 +1,2 @@
+../Core/Src/Menu_P.c:20:6:Menu_UART_Start	24	static
+../Core/Src/Menu_P.c:27:6:Menu_UART_Out	64	static

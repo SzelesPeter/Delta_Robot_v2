@@ -40,7 +40,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/ESP8266EX_WIFI_P.h ../Core/Inc/ICM-40627_P.h \
  ../Core/Inc/MPU-6050_P.h ../Core/Inc/PCF8574T_P.h \
  ../Core/Inc/Bill_Matrix_P.h ../Core/Inc/HD44780U_P.h \
- ../Core/Inc/SSD1306_OLED_P.h
+ ../Core/Inc/SSD1306_OLED_P.h ../Core/Inc/PID.h ../Core/Inc/Menu_P.h
 ../Core/Inc/main.h:
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal.h:
 ../Core/Inc/stm32h5xx_hal_conf.h:
@@ -89,3 +89,5 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/Bill_Matrix_P.h:
 ../Core/Inc/HD44780U_P.h:
 ../Core/Inc/SSD1306_OLED_P.h:
+../Core/Inc/PID.h:
+../Core/Inc/Menu_P.h:

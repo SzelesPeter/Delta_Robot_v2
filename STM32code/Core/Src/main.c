@@ -57,7 +57,7 @@ UART_HandleTypeDef huart6;
 PCD_HandleTypeDef hpcd_USB_DRD_FS;
 
 /* USER CODE BEGIN PV */
-
+uint8_t enter[] = {"\r\n"} ;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -125,7 +125,25 @@ int main(void)
   MX_ICACHE_Init();
   /* USER CODE BEGIN 2 */
 
+  uint8_t tx_buff[60] = {"test \r\n"};
+  //HAL_UART_Transmit(&huart1, tx_buff, 10, 1000);
 
+
+  //sprintf(tx_buff, "%d \r\n", 0x3FFF&Hall_Sensor_Read_Magnitude(&hspi1, Hall_SS0_PORT, Hall_SS0_PIN));
+  //HAL_UART_Transmit(&huart1, tx_buff, 10, 1000);
+
+  //sprintf(tx_buff, "%d \r\n", 360*(0x3FFF&Hall_Sensor_Read_Angle(&hspi1, Hall_SS0_PORT, Hall_SS0_PIN))/0x3FFF); // @suppress("Float formatting support")
+  //HAL_UART_Transmit(&huart1, tx_buff, 10, 1000);
+
+  Relay_0_Set();
+  HAL_Delay(200);
+  Relay_1_Set();
+  HAL_Delay(200);
+  Relay_0_Reset();
+  HAL_Delay(200);
+  Relay_1_Reset();
+
+  Menu_UART_Start(&huart1);
 
   //HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_2);
   //Frequency_Out(&htim2,10000);
@@ -146,8 +164,11 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	 // sprintf(tx_buff, "\r\n %f \r\n",360*(double)((double)(0x3FFF&Hall_Sensor_Read_Angle(&hspi1, Hall_SS0_PORT, Hall_SS0_PIN))/0x3FFF)); // @suppress("Float formatting support")
+	  //  HAL_UART_Transmit(&huart1, tx_buff, 10, 1000);
 
-
+/*
+ 360*(double)((0x3FFF&Hall_Sensor_Read_Angle(&hspi1, Hall_SS0_PORT, Hall_SS0_PIN))/0x3FFF)
 	  move (20000,20000,20000,M0_TIM, M0_CHANNEL, M1_TIM, M1_CHANNEL, M2_TIM, M2_CHANNEL);
 
 
@@ -158,7 +179,7 @@ int main(void)
 
 
 	  HAL_Delay(1000);
-
+*/
   }
   /* USER CODE END 3 */
 }
@@ -315,16 +336,16 @@ static void MX_SPI1_Init(void)
   hspi1.Instance = SPI1;
   hspi1.Init.Mode = SPI_MODE_MASTER;
   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi1.Init.DataSize = SPI_DATASIZE_4BIT;
+  hspi1.Init.DataSize = SPI_DATASIZE_16BIT;
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.CLKPhase = SPI_PHASE_2EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
   hspi1.Init.CRCPolynomial = 0x7;
-  hspi1.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  hspi1.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
   hspi1.Init.NSSPolarity = SPI_NSS_POLARITY_LOW;
   hspi1.Init.FifoThreshold = SPI_FIFO_THRESHOLD_01DATA;
   hspi1.Init.MasterSSIdleness = SPI_MASTER_SS_IDLENESS_00CYCLE;
@@ -769,10 +790,13 @@ static void MX_GPIO_Init(void)
                           |GPIO_PIN_4, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_10|GPIO_PIN_5|GPIO_PIN_8, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_8, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10|GPIO_PIN_5, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
 
   /*Configure GPIO pins : PC13 PC15 PC0 PC1
                            PC4 */
