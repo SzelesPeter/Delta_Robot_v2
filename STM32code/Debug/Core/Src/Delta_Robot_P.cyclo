@@ -1,4 +1,4 @@
-../Core/Src/Delta_Robot_P.c:11:6:Relay_0_Set	1
-../Core/Src/Delta_Robot_P.c:16:6:Relay_0_Reset	1
-../Core/Src/Delta_Robot_P.c:21:6:Relay_1_Set	1
-../Core/Src/Delta_Robot_P.c:26:6:Relay_1_Reset	1
+../Core/Src/Delta_Robot_P.c:10:6:Relay_0_Set	1
+../Core/Src/Delta_Robot_P.c:15:6:Relay_0_Reset	1
+../Core/Src/Delta_Robot_P.c:20:6:Relay_1_Set	1
+../Core/Src/Delta_Robot_P.c:25:6:Relay_1_Reset	1

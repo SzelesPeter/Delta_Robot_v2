@@ -143,7 +143,7 @@ int main(void)
   HAL_Delay(200);
   Relay_1_Reset();
 
-  Menu_UART_Start(&huart1);
+
 
   //HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_2);
   //Frequency_Out(&htim2,10000);
@@ -155,6 +155,8 @@ int main(void)
   //Frequency_Out(&htim3,40000);
   //Frequency_Out(&htim2,40000);
   //HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, GPIO_PIN_SET);
+
+  Menu_UART_Start(&huart1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -164,6 +166,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  Menu_UART_Update(&huart1);
 	 // sprintf(tx_buff, "\r\n %f \r\n",360*(double)((double)(0x3FFF&Hall_Sensor_Read_Angle(&hspi1, Hall_SS0_PORT, Hall_SS0_PIN))/0x3FFF)); // @suppress("Float formatting support")
 	  //  HAL_UART_Transmit(&huart1, tx_buff, 10, 1000);
 

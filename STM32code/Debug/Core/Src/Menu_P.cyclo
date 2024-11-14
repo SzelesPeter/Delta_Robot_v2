@@ -1,2 +1,6 @@
-../Core/Src/Menu_P.c:20:6:Menu_UART_Start	2
-../Core/Src/Menu_P.c:27:6:Menu_UART_Out	3
+../Core/Src/Menu_P.c:13:6:Menu_UART_Start	2
+../Core/Src/Menu_P.c:20:6:Menu_UART_Update	1
+../Core/Src/Menu_P.c:25:6:Menu_UART_Main	5
+../Core/Src/Menu_P.c:66:6:Menu_UART_Sensors	4
+../Core/Src/Menu_P.c:111:6:Menu_UART_Relay	7
+../Core/Src/Menu_P.c:153:6:Menu_UART_Out	3
