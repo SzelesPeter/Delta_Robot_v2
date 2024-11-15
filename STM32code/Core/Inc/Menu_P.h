@@ -8,6 +8,7 @@
 #include "stm32h5xx_hal.h"
 #include "Delta_Robot_P.h"
 #include "Stepper_Motor_P.h"
+#include "AS5048A_P.h"
 
 void Menu_UART_Start(UART_HandleTypeDef *huart);
 void Menu_UART_Update(UART_HandleTypeDef *huart);

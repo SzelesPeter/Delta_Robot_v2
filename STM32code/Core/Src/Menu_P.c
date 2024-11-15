@@ -150,16 +150,28 @@ void Menu_UART_Sensors(UART_HandleTypeDef *huart)
 				switch (rx_buff[0])
 				{
 					case '0':
+						sprintf(tx_buff, "\r\nHALL 0 angle: %f \r\n",360*(double)((double)(0x3FFF&Hall_Sensor_Read_Angle(&hspi1, Hall_SS0_PORT, Hall_SS0_PIN))/0x3FFF));
+						UART_Out(huart, tx_buff);
 						break;
 					case '1':
+						sprintf(tx_buff, "\r\nHALL 0 amplitude: %d \r\n", 0x3FFF&Hall_Sensor_Read_Magnitude(Hall_SPI, Hall_SS0_PORT, Hall_SS0_PIN));
+						UART_Out(huart, tx_buff);
 						break;
 					case '2':
+						sprintf(tx_buff, "\r\nHALL 1 angle: %f \r\n",360*(double)((double)(0x3FFF&Hall_Sensor_Read_Angle(Hall_SPI, Hall_SS1_PORT, Hall_SS1_PIN))/0x3FFF));
+						UART_Out(huart, tx_buff);
 						break;
 					case '3':
+						sprintf(tx_buff, "\r\nHALL 1 amplitude: %d \r\n", 0x3FFF&Hall_Sensor_Read_Magnitude(Hall_SPI, Hall_SS1_PORT, Hall_SS1_PIN));
+						UART_Out(huart, tx_buff);
 						break;
 					case '4':
+						sprintf(tx_buff, "\r\nHALL 2 angle: %f \r\n",360*(double)((double)(0x3FFF&Hall_Sensor_Read_Angle(&hspi1, Hall_SS2_PORT, Hall_SS2_PIN))/0x3FFF));
+						UART_Out(huart, tx_buff);
 						break;
 					case '5':
+						sprintf(tx_buff, "\r\nHALL 2 amplitude: %d \r\n", 0x3FFF&Hall_Sensor_Read_Magnitude(Hall_SPI, Hall_SS2_PORT, Hall_SS2_PIN));
+						UART_Out(huart, tx_buff);
 						break;
 					case '6':
 						Menu_State = Menu_UART_Main;

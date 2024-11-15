@@ -7,13 +7,15 @@
 
 #include "stm32h5xx_hal.h"
 
+extern SPI_HandleTypeDef hspi1;
+
 #define Hall_SS0_PORT GPIOA
 #define Hall_SS0_PIN GPIO_PIN_8
 #define Hall_SS1_PORT GPIOB
 #define Hall_SS1_PIN GPIO_PIN_10
 #define Hall_SS2_PORT GPIOB
 #define Hall_SS2_PIN GPIO_PIN_5
-#define Hall_SPI hspi1
+#define Hall_SPI &hspi1
 
 //AS5048A commands
 #define angle_adress 0xFFFF;
