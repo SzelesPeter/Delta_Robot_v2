@@ -1,6 +1,8 @@
 ../Core/Src/Menu_P.c:13:6:Menu_UART_Start	456	static
 ../Core/Src/Menu_P.c:20:6:Menu_UART_Update	16	static
-../Core/Src/Menu_P.c:25:6:Menu_UART_Main	56	static,ignoring_inline_asm
-../Core/Src/Menu_P.c:66:6:Menu_UART_Sensors	56	static,ignoring_inline_asm
-../Core/Src/Menu_P.c:111:6:Menu_UART_Relay	48	static,ignoring_inline_asm
-../Core/Src/Menu_P.c:153:6:Menu_UART_Out	72	static
+../Core/Src/Menu_P.c:25:6:Menu_UART_Main	128	static,ignoring_inline_asm
+../Core/Src/Menu_P.c:130:6:Menu_UART_Sensors	96	static,ignoring_inline_asm
+../Core/Src/Menu_P.c:176:6:Menu_UART_Relay	88	static,ignoring_inline_asm
+../Core/Src/Menu_P.c:231:6:Menu_UART_Out	72	static
+../Core/Src/Menu_P.c:243:6:UART_Out	24	static
+../Core/Src/Menu_P.c:248:6:UART_In	40	static,ignoring_inline_asm

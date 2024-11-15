@@ -6,10 +6,16 @@
  */
 
 
+
+
 #include "Stepper_Motor_P.h"
 
+uint32_t f_MAX = 40000;
+uint32_t f_MIN = 100;
+uint32_t a_MAX = 100000;
+
 uint32_t M_direction[3] =  {1,1,1};
-uint32_t M_f[3] =  {100,0,0};
+uint32_t M_f[3] =  {0,0,0};
 int32_t M_poz[3] = {0,0,0};
 
 uint32_t M_move_f[3] ={0,0,0};
@@ -59,7 +65,7 @@ void Ramp(uint32_t M)
 		}
 		else
 		{
-			tmp = f_MIN+(double)a_MAX*(double)sqrt((double)(2*(M_move_l[M]-i))/a_MAX);
+			tmp = f_MIN+(double)a_MAX*(double)sqrt((double)(2*(M_move_l[M]-1-i))/a_MAX);
 			if(tmp > f_MAX)
 				tmp = f_MAX;
 		}
@@ -77,7 +83,6 @@ void Ramp_Out(TIM_HandleTypeDef* htim,uint32_t Channel, uint32_t M)
 	else
 	{
 		Period_Out(htim,Period_ramp[M][M_move_poz[M]]);
-
 		M_move_poz[M]++;
 	}
 }
@@ -136,13 +141,68 @@ void move (int32_t theta0_target,int32_t theta1_target,int32_t theta2_target,TIM
 	__HAL_TIM_SET_COUNTER(tim2,0);
 	__HAL_TIM_SET_COUNTER(tim3,0);
 
+	Period_Out(tim1,Period_ramp[0][M_move_poz[0]]);
+	Period_Out(tim2,Period_ramp[1][M_move_poz[1]]);
+	Period_Out(tim3,Period_ramp[2][M_move_poz[2]]);
+
+	if(M_move_l[0] >  M_move_poz[0])
 	HAL_TIM_OC_Start_IT(tim1,Channel1);
+	if(M_move_l[1] >  M_move_poz[1])
 	HAL_TIM_OC_Start_IT(tim2,Channel2);
+	if(M_move_l[2] >  M_move_poz[2])
 	HAL_TIM_OC_Start_IT(tim3,Channel3);
 
-	while(M_move_l[0] >  M_move_poz[0] || M_move_l[1] >  M_move_poz[1] || M_move_l[2] >  M_move_poz[2])
-	{
+	M_move_poz[0]++;
+	M_move_poz[1]++;
+	M_move_poz[2]++;
 
+	while(!(theta0_target ==  M_poz[0]) || !(theta1_target ==  M_poz[1]) || !(theta2_target ==  M_poz[2]))
+	{
 	}
+}
+
+void Set_f_MAX(uint32_t tmp)
+{
+	f_MAX = tmp;
+}
+
+void Set_f_MIN(uint32_t tmp)
+{
+	f_MIN = tmp;
+}
+
+void Set_a_MAX(uint32_t tmp)
+{
+	a_MAX = tmp;
+}
+
+uint32_t Get_f_MAX(void)
+{
+	return f_MAX;
+}
+
+uint32_t Get_f_MIN(void)
+{
+	return f_MIN;
+}
+
+uint32_t Get_a_MAX(void)
+{
+	return a_MAX;
+}
+
+uint32_t M_Poz_0(void)
+{
+	return M_poz[0];
+}
+
+uint32_t M_Poz_1(void)
+{
+	return M_poz[1];
+}
+
+uint32_t M_Poz_2(void)
+{
+	return M_poz[2];
 }
 

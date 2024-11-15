@@ -18,5 +18,7 @@
 
 void Relay_0_Set(void);
 void Relay_0_Reset(void);
+uint8_t Relay_0_Read(void);
 void Relay_1_Set(void);
 void Relay_1_Reset(void);
+uint8_t Relay_1_Read(void);
