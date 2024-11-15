@@ -1,0 +1,2 @@
+
+Dolgozatomban egy delta robottal megvalósított, úgynvezett "Flying probe" automata áramkör mérőrendszert szeretnék megvalósítani. A nyomtatott áramköröm meglévő mérési pontokat kamera segítségével azonosítom, és a mérőtüskét a delta robot helyezi pozícióba legalább +-1mm pontossággal. A mérést automatikusan digitális műszer segítségével végződik. A digitális műszerret és a robotkarrart egy számítógép vezérelné, ami a mérési eredményeket tárolná és visszajelezné.
