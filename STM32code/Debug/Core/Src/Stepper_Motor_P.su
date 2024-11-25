@@ -14,3 +14,6 @@
 ../Core/Src/Stepper_Motor_P.c:194:10:M_Poz_0	4	static
 ../Core/Src/Stepper_Motor_P.c:199:10:M_Poz_1	4	static
 ../Core/Src/Stepper_Motor_P.c:204:10:M_Poz_2	4	static
+../Core/Src/Stepper_Motor_P.c:209:6:Set_M_Poz_0	16	static
+../Core/Src/Stepper_Motor_P.c:213:6:Set_M_Poz_1	16	static
+../Core/Src/Stepper_Motor_P.c:217:6:Set_M_Poz_2	16	static

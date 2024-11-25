@@ -36,7 +36,7 @@ Core/Src/Menu_P.o: ../Core/Src/Menu_P.c ../Core/Inc/Menu_P.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_pcd_ex.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h \
  ../Core/Inc/Delta_Robot_P.h ../Core/Inc/Stepper_Motor_P.h \
- ../Core/Inc/AS5048A_P.h
+ ../Core/Inc/AS5048A_P.h ../Core/Inc/Inverz_Kinematika_P.h
 ../Core/Inc/Menu_P.h:
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal.h:
 ../Core/Inc/stm32h5xx_hal_conf.h:
@@ -77,3 +77,4 @@ Core/Src/Menu_P.o: ../Core/Src/Menu_P.c ../Core/Inc/Menu_P.h \
 ../Core/Inc/Delta_Robot_P.h:
 ../Core/Inc/Stepper_Motor_P.h:
 ../Core/Inc/AS5048A_P.h:
+../Core/Inc/Inverz_Kinematika_P.h:

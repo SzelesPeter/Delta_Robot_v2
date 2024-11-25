@@ -34,6 +34,7 @@ void Menu_UART_Main(UART_HandleTypeDef *huart)
 			"Set f MIN",
 			"Set a",
 			"Move to motor poz",
+			"Move to XYZ poz",
 			"Set/Reset Relay",
 			"Read sensors"
 	};
@@ -114,9 +115,40 @@ void Menu_UART_Main(UART_HandleTypeDef *huart)
 					UART_Out(huart, tx_buff);
 					break;
 				case '4':
-					Menu_State = Menu_UART_Relay;
+					strcpy(tx_buff, "Input X poz\r\n");
+					UART_Out(huart, tx_buff);
+					UART_In(huart, tx_buff, 20);
+					poz0 = atoi(tx_buff);
+					sprintf(tx_buff, "New X poz will be: %d\r\n",poz0);
+					UART_Out(huart, tx_buff);
+
+					strcpy(tx_buff, "Input Y poz\r\n");
+					UART_Out(huart, tx_buff);
+					UART_In(huart, tx_buff, 20);
+					poz1 = atoi(tx_buff);
+					sprintf(tx_buff, "New Y poz will be: %d\r\n",poz1);
+					UART_Out(huart, tx_buff);
+
+					strcpy(tx_buff, "Input Z poz\r\n");
+					UART_Out(huart, tx_buff);
+					UART_In(huart, tx_buff, 20);
+					poz2 = atoi(tx_buff);
+					sprintf(tx_buff, "New Z poz will be: %d\r\n",poz2);
+					UART_Out(huart, tx_buff);
+
+					Move_to_XYZ(poz0,poz1,poz2,M0_TIM, M0_CHANNEL, M1_TIM, M1_CHANNEL, M2_TIM, M2_CHANNEL);
+
+					sprintf(tx_buff, "\r\nNew motor 0 poz: %d\r\n",M_Poz_0());
+					UART_Out(huart, tx_buff);
+					sprintf(tx_buff, "New motor 1 poz: %d\r\n",M_Poz_1());
+					UART_Out(huart, tx_buff);
+					sprintf(tx_buff, "New motor 2 poz: %d\r\n",M_Poz_2());
+					UART_Out(huart, tx_buff);
 					break;
 				case '5':
+					Menu_State = Menu_UART_Relay;
+					break;
+				case '6':
 					Menu_State = Menu_UART_Sensors;
 					break;
 			}
@@ -141,7 +173,6 @@ void Menu_UART_Sensors(UART_HandleTypeDef *huart)
 			"Exit"
 	};
 	Menu_UART_Out(huart, Menu_Sensor, 7);
-
 	uint8_t rx_buff[2] = {0};
 		while(1)
 		{
@@ -197,7 +228,6 @@ void Menu_UART_Relay(UART_HandleTypeDef *huart)
 			"Exit"
 	};
 	Menu_UART_Out(huart, Menu_Relay, 5);
-
 	uint8_t rx_buff[2] = {0};
 		while(1)
 		{

@@ -95,38 +95,38 @@ void move (int32_t theta0_target,int32_t theta1_target,int32_t theta2_target,TIM
 
 	if(M_move_l[0]<0)
 	{
-		M_move_l[0] = M_move_l[0]*(-1);
+		M_move_l[0] = ~M_move_l[0]+1;
 		M_direction[0] = 0;
-		HAL_GPIO_WritePin(M0_DIR_PORT, M0_DIR_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(M0_DIR_PORT, M0_DIR_PIN, GPIO_PIN_SET);
 	}
 	else
 	{
 		M_direction[0] = 1;
-		HAL_GPIO_WritePin(M0_DIR_PORT, M0_DIR_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(M0_DIR_PORT, M0_DIR_PIN, GPIO_PIN_RESET);
 	}
 
 	if(M_move_l[1]<0)
 	{
-		M_move_l[1] = M_move_l[1]*(-1);
+		M_move_l[1] = ~M_move_l[1]+1;
 		M_direction[1] = 0;
-		HAL_GPIO_WritePin(M1_DIR_PORT, M1_DIR_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(M1_DIR_PORT, M1_DIR_PIN, GPIO_PIN_SET);
 		}
 	else
 	{
 		M_direction[1] = 1;
-		HAL_GPIO_WritePin(M1_DIR_PORT, M1_DIR_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(M1_DIR_PORT, M1_DIR_PIN, GPIO_PIN_RESET);
 	}
 
 	if(M_move_l[2]<0)
 	{
-		M_move_l[2] = M_move_l[2]*(-1);
+		M_move_l[2] = ~M_move_l[2]+1;
 		M_direction[2] = 0;
-		HAL_GPIO_WritePin(M2_DIR_PORT, M2_DIR_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(M2_DIR_PORT, M2_DIR_PIN, GPIO_PIN_SET);
 	}
 	else
 	{
 		M_direction[2] = 1;
-		HAL_GPIO_WritePin(M2_DIR_PORT, M2_DIR_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(M2_DIR_PORT, M2_DIR_PIN, GPIO_PIN_RESET);
 	}
 
 	Ramp(0);
@@ -205,4 +205,19 @@ uint32_t M_Poz_2(void)
 {
 	return M_poz[2];
 }
+
+void Set_M_Poz_0(uint32_t tmp)
+{
+	M_poz[0] = tmp;
+}
+void Set_M_Poz_1(uint32_t tmp)
+{
+	M_poz[1] = tmp;
+}
+void Set_M_Poz_2(uint32_t tmp)
+{
+	M_poz[2] = tmp;
+}
+
+
 
