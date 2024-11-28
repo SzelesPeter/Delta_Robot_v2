@@ -25,9 +25,9 @@ void Menu_UART_Update(UART_HandleTypeDef *huart)
 void Menu_UART_Main(UART_HandleTypeDef *huart)
 {
 	uint8_t tx_buff[40]={"\r\n"};
-	uint32_t poz0;
-	uint32_t poz1;
-	uint32_t poz2;
+	int32_t poz0;
+	int32_t poz1;
+	int32_t poz2;
 
 	uint8_t *Menu_Main[] = {
 			"Set f MAX",
