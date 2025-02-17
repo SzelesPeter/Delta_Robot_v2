@@ -60,8 +60,8 @@ all: main-build
 main-build: Delta_Robot_v2.elf secondary-outputs
 
 # Tool invocations
-Delta_Robot_v2.elf Delta_Robot_v2.map: $(OBJS) $(USER_OBJS) C:\Users\szpet\Documents\GitHub\Delta_Robot_v2\STM32code\STM32H533RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Delta_Robot_v2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\Users\szpet\Documents\GitHub\Delta_Robot_v2\STM32code\STM32H533RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Delta_Robot_v2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Delta_Robot_v2.elf Delta_Robot_v2.map: $(OBJS) $(USER_OBJS) C:\Users\win10\Documents\GitHub\Delta_Robot_v2\STM32code\STM32H533RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Delta_Robot_v2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\Users\win10\Documents\GitHub\Delta_Robot_v2\STM32code\STM32H533RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Delta_Robot_v2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
