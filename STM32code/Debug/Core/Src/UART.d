@@ -1,4 +1,4 @@
-Core/Src/stm32h5xx_it.o: ../Core/Src/stm32h5xx_it.c ../Core/Inc/main.h \
+Core/Src/UART.o: ../Core/Src/UART.c ../Core/Inc/UART.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal.h \
  ../Core/Inc/stm32h5xx_hal_conf.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_rcc.h \
@@ -34,15 +34,8 @@ Core/Src/stm32h5xx_it.o: ../Core/Src/stm32h5xx_it.c ../Core/Inc/main.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_pcd.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_ll_usb.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_pcd_ex.h \
- ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h \
- ../Core/Inc/Stepper_Motor_P.h ../Core/Inc/Delta_Robot_P.h \
- ../Core/Inc/Inverz_Kinematika_P.h ../Core/Inc/UART.h \
- ../Core/Inc/AS5048A_P.h ../Core/Inc/ESP8266EX_WIFI_P.h \
- ../Core/Inc/ICM-40627_P.h ../Core/Inc/MPU-6050_P.h \
- ../Core/Inc/PCF8574T_P.h ../Core/Inc/Bill_Matrix_P.h \
- ../Core/Inc/HD44780U_P.h ../Core/Inc/SSD1306_OLED_P.h ../Core/Inc/PID.h \
- ../Core/Inc/Menu_P.h ../Core/Inc/stm32h5xx_it.h
-../Core/Inc/main.h:
+ ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h
+../Core/Inc/UART.h:
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal.h:
 ../Core/Inc/stm32h5xx_hal_conf.h:
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_rcc.h:
@@ -79,18 +72,3 @@ Core/Src/stm32h5xx_it.o: ../Core/Src/stm32h5xx_it.c ../Core/Inc/main.h \
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_ll_usb.h:
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_pcd_ex.h:
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h:
-../Core/Inc/Stepper_Motor_P.h:
-../Core/Inc/Delta_Robot_P.h:
-../Core/Inc/Inverz_Kinematika_P.h:
-../Core/Inc/UART.h:
-../Core/Inc/AS5048A_P.h:
-../Core/Inc/ESP8266EX_WIFI_P.h:
-../Core/Inc/ICM-40627_P.h:
-../Core/Inc/MPU-6050_P.h:
-../Core/Inc/PCF8574T_P.h:
-../Core/Inc/Bill_Matrix_P.h:
-../Core/Inc/HD44780U_P.h:
-../Core/Inc/SSD1306_OLED_P.h:
-../Core/Inc/PID.h:
-../Core/Inc/Menu_P.h:
-../Core/Inc/stm32h5xx_it.h:

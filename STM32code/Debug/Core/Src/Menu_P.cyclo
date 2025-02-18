@@ -4,5 +4,3 @@
 ../Core/Src/Menu_P.c:162:6:Menu_UART_Sensors	9
 ../Core/Src/Menu_P.c:219:6:Menu_UART_Relay	11
 ../Core/Src/Menu_P.c:273:6:Menu_UART_Out	2
-../Core/Src/Menu_P.c:285:6:UART_Out	2
-../Core/Src/Menu_P.c:290:6:UART_In	4

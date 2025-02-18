@@ -136,7 +136,7 @@ void Menu_UART_Main(UART_HandleTypeDef *huart)
 					sprintf(tx_buff, "New Z poz will be: %d\r\n",poz2);
 					UART_Out(huart, tx_buff);
 
-					Move_to_XYZ(poz0,poz1,poz2,M0_TIM, M0_CHANNEL, M1_TIM, M1_CHANNEL, M2_TIM, M2_CHANNEL);
+					Move_to_XYZ(huart,poz0,poz1,poz2,M0_TIM, M0_CHANNEL, M1_TIM, M1_CHANNEL, M2_TIM, M2_CHANNEL);
 
 					sprintf(tx_buff, "\r\nNew motor 0 poz: %d\r\n",M_Poz_0());
 					UART_Out(huart, tx_buff);
@@ -282,33 +282,5 @@ void Menu_UART_Out(UART_HandleTypeDef *huart, uint8_t** p, uint32_t size)
 	}
 }
 
-void UART_Out(UART_HandleTypeDef *huart, uint8_t* p)
-{
-	for(uint8_t j=0;p[j];j++) HAL_UART_Transmit(huart, (p+j), 1, 1000);
-}
 
-void UART_In(UART_HandleTypeDef *huart, uint8_t* p, uint8_t len)
-{
-	uint8_t rx_buff =0;
-	uint8_t tx_buff[10]={"\r\n"};
-	uint8_t i=0;
-	while(i<len)
-	{
-		while(1)
-		{
-			if(HAL_UART_Receive(huart, &rx_buff, 1, 1000)==HAL_OK) //if transfer is successful
-			{
-				break;
-			} else {
-				__NOP();
-			}
-		}
-		if(rx_buff=='\r') break;
-		*(p+i) = rx_buff;
-		HAL_UART_Transmit(huart, &rx_buff, 1, 1000);
-		i++;
-	}
-	*(p+i) = 0;
-	HAL_UART_Transmit(huart, tx_buff, 4, 1000);
-}
 

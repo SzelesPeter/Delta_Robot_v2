@@ -8,7 +8,7 @@
 
 extern UART_HandleTypeDef *huart1;
 #include "Inverz_Kinematika_P.h"
-void  Move_to_XYZ(double X_target, double Y_target, double Z_target,TIM_HandleTypeDef* tim1,uint32_t Channel1, TIM_HandleTypeDef* tim2,uint32_t Channel2, TIM_HandleTypeDef* tim3,uint32_t Channel3)
+void  Move_to_XYZ(UART_HandleTypeDef *huart1, double X_target, double Y_target, double Z_target,TIM_HandleTypeDef* tim1,uint32_t Channel1, TIM_HandleTypeDef* tim2,uint32_t Channel2, TIM_HandleTypeDef* tim3,uint32_t Channel3)
 {
 	double also_arm_lenght_XZ;
 	double Theta0;
@@ -236,3 +236,4 @@ void  Zero_XYZ(double X_target, double Y_target, double Z_target)
 	Set_M_Poz_1(Theta1);
 	Set_M_Poz_2(Theta2);
 }
+

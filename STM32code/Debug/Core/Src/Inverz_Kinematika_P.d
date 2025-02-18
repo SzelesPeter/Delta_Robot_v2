@@ -35,7 +35,8 @@ Core/Src/Inverz_Kinematika_P.o: ../Core/Src/Inverz_Kinematika_P.c \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_ll_usb.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_pcd_ex.h \
  ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h \
- ../Core/Inc/Inverz_Kinematika_P.h ../Core/Inc/Stepper_Motor_P.h
+ ../Core/Inc/Inverz_Kinematika_P.h ../Core/Inc/Stepper_Motor_P.h \
+ ../Core/Inc/UART.h
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal.h:
 ../Core/Inc/stm32h5xx_hal_conf.h:
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_rcc.h:
@@ -74,3 +75,4 @@ Core/Src/Inverz_Kinematika_P.o: ../Core/Src/Inverz_Kinematika_P.c \
 ../Drivers/STM32H5xx_HAL_Driver/Inc/stm32h5xx_hal_exti.h:
 ../Core/Inc/Inverz_Kinematika_P.h:
 ../Core/Inc/Stepper_Motor_P.h:
+../Core/Inc/UART.h:
