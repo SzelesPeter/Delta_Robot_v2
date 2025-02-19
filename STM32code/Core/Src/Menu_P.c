@@ -12,8 +12,10 @@ void (*Menu_State)(UART_HandleTypeDef *huart) = Menu_UART_Main;
 
 void Menu_UART_Start(UART_HandleTypeDef *huart)
 {
+	uint8_t tx_buff[40]={"\r\n"};
 	uint8_t Banner[] = {"\r\n         :::::::::   ::::::::::  :::     :::::::::::  :::  \r\n        :+:    :+:  :+:         :+:         :+:    :+: :+: \r\n       +:+    +:+  +:+         +:+         +:+   +:+   +:+ \r\n      +#+    +:+  +#++:++#    +#+         +#+  +#++:++#++: \r\n     +#+    +#+  +#+         +#+         +#+  +#+     +#+  \r\n    #+#    #+#  #+#         #+#         #+#  #+#     #+#   \r\n   #########   ##########  ##########  ###  ###     ###    \r\n\r\n"};
 	for(uint32_t j=0;Banner[j];j++) HAL_UART_Transmit(huart, (Banner+j), 1, 1000);
+
 	Menu_UART_Update(huart);
 }
 

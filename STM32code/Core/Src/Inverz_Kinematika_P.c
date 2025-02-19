@@ -63,10 +63,10 @@ void  Move_to_XYZ(UART_HandleTypeDef *huart1, double X_target, double Y_target, 
 	sprintf(tx_buff, " h: %f \r\n", h);
 	UART_Out(huart1, tx_buff);
 
-	Arm_joint_X = l*((X_target_forgatott+effektor_offset) - motor_offset)/d + h*(Z_target - motor_height)/d + motor_offset;
-	Arm_joint_Z = l*((Z_target - motor_height)/d + h*(X_target_forgatott+effektor_offset) - motor_offset)/d + motor_height;
+	Arm_joint_X = l*((X_target_forgatott+effektor_offset) - motor_offset)/d - h*(Z_target - motor_height)/d + motor_offset;
+	Arm_joint_Z = (l*((Z_target - motor_height)/d) + (h*(X_target_forgatott+effektor_offset) - motor_offset)/d) + motor_height;
 
-	Theta0 =40000 * atan2((Arm_joint_Z-motor_height),(Arm_joint_X-motor_offset)) /(2*PI);
+	Theta0 =40000* atan2((Arm_joint_Z-motor_height),(Arm_joint_X-motor_offset)) /(2*PI);
 
 	sprintf(tx_buff, " Arm_joint_X: %f \r\n", Arm_joint_X);
 	UART_Out(huart1, tx_buff);
@@ -106,15 +106,15 @@ void  Move_to_XYZ(UART_HandleTypeDef *huart1, double X_target, double Y_target, 
 		sprintf(tx_buff, " h: %f \r\n", h);
 		UART_Out(huart1, tx_buff);
 
-	Arm_joint_X = l*((X_target_forgatott+effektor_offset) - motor_offset)/d + h*(Z_target - motor_height)/d + motor_offset;
-	Arm_joint_Z = l*((Z_target - motor_height)/d + h*(X_target_forgatott+effektor_offset) - motor_offset)/d + motor_height;
+		Arm_joint_X = l*((X_target_forgatott+effektor_offset) - motor_offset)/d - h*(Z_target - motor_height)/d + motor_offset;
+		Arm_joint_Z = (l*((Z_target - motor_height)/d) + (h*(X_target_forgatott+effektor_offset) - motor_offset)/d) + motor_height;
 	Theta1 =40000 * atan2((Arm_joint_Z-motor_height),(Arm_joint_X-motor_offset)) /(2*PI);
 
 	sprintf(tx_buff, " Arm_joint_X: %f \r\n", Arm_joint_X);
 		UART_Out(huart1, tx_buff);
 		sprintf(tx_buff, " Arm_joint_Z: %f \r\n", Arm_joint_Z);
 		UART_Out(huart1, tx_buff);
-		sprintf(tx_buff, " Theta0: %f \r\n", Theta0);
+		sprintf(tx_buff, " Theta0: %f \r\n", Theta1);
 		UART_Out(huart1, tx_buff);
 
 	//-----------------------------Motor 2
@@ -153,21 +153,21 @@ void  Move_to_XYZ(UART_HandleTypeDef *huart1, double X_target, double Y_target, 
 			sprintf(tx_buff, " h: %f \r\n", h);
 			UART_Out(huart1, tx_buff);
 
-		Arm_joint_X = l*((X_target_forgatott+effektor_offset) - motor_offset)/d + h*(Z_target - motor_height)/d + motor_offset;
-		Arm_joint_Z = l*((Z_target - motor_height)/d + h*(X_target_forgatott+effektor_offset) - motor_offset)/d + motor_height;
+			Arm_joint_X = l*((X_target_forgatott+effektor_offset) - motor_offset)/d - h*(Z_target - motor_height)/d + motor_offset;
+			Arm_joint_Z = (l*((Z_target - motor_height)/d) + (h*(X_target_forgatott+effektor_offset) - motor_offset)/d) + motor_height;
 		Theta2 =40000 * atan2((Arm_joint_Z-motor_height),(Arm_joint_X-motor_offset)) /(2*PI);
 
 		sprintf(tx_buff, " Arm_joint_X: %f \r\n", Arm_joint_X);
 			UART_Out(huart1, tx_buff);
 			sprintf(tx_buff, " Arm_joint_Z: %f \r\n", Arm_joint_Z);
 			UART_Out(huart1, tx_buff);
-			sprintf(tx_buff, " Theta0: %f \r\n", Theta0);
+			sprintf(tx_buff, " Theta0: %f \r\n", Theta2);
 			UART_Out(huart1, tx_buff);
 
 	move (Theta0,Theta1,Theta2,tim1, Channel1, tim2, Channel2, tim3, Channel3);
 }
 
-void  Zero_XYZ(double X_target, double Y_target, double Z_target)
+void  Zero_XYZ(UART_HandleTypeDef *huart1, double X_target, double Y_target, double Z_target)
 {
 	double also_arm_lenght_XZ;
 	double Theta0;
@@ -186,6 +186,8 @@ void  Zero_XYZ(double X_target, double Y_target, double Z_target)
 	double Arm_joint_X;
 	double Arm_joint_Z;
 
+	uint8_t tx_buff[50] = {0};
+
 	//-----------------------------Motor 0
 	X_target_forgatott = X_target;
 	Y_target_forgatott = Y_target;
@@ -195,8 +197,8 @@ void  Zero_XYZ(double X_target, double Y_target, double Z_target)
 	l = (pow(upper_arm_lenght, 2) - pow(also_arm_lenght_XZ, 2) + pow(d, 2))/(2*d);
 	h = sqrt(pow(upper_arm_lenght, 2) - pow(l, 2));
 
-	Arm_joint_X = l*((X_target_forgatott+effektor_offset) - motor_offset)/d + h*(Z_target - motor_height)/d + motor_offset;
-	Arm_joint_Z = l*((Z_target - motor_height)/d + h*(X_target_forgatott+effektor_offset) - motor_offset)/d + motor_height;
+	Arm_joint_X = l*((X_target_forgatott+effektor_offset) - motor_offset)/d - h*(Z_target - motor_height)/d + motor_offset;
+	Arm_joint_Z = (l*((Z_target - motor_height)/d) + (h*(X_target_forgatott+effektor_offset) - motor_offset)/d) + motor_height;
 
 	Theta0 =40000 * atan2((Arm_joint_Z-motor_height),(Arm_joint_X-motor_offset)) /(2*PI);
 
@@ -211,8 +213,8 @@ void  Zero_XYZ(double X_target, double Y_target, double Z_target)
 	l = (pow(upper_arm_lenght, 2) - pow(also_arm_lenght_XZ, 2) + pow(d, 2))/(2*d);
 	h = sqrt(pow(upper_arm_lenght, 2) - pow(l, 2));
 
-	Arm_joint_X = l*((X_target_forgatott+effektor_offset) - motor_offset)/d + h*(Z_target - motor_height)/d + motor_offset;
-	Arm_joint_Z = l*((Z_target - motor_height)/d + h*(X_target_forgatott+effektor_offset) - motor_offset)/d + motor_height;
+	Arm_joint_X = l*((X_target_forgatott+effektor_offset) - motor_offset)/d - h*(Z_target - motor_height)/d + motor_offset;
+	Arm_joint_Z = (l*((Z_target - motor_height)/d) + (h*(X_target_forgatott+effektor_offset) - motor_offset)/d) + motor_height;
 
 	Theta1 =40000 * atan2((Arm_joint_Z-motor_height),(Arm_joint_X-motor_offset)) /(2*PI);
 
@@ -227,13 +229,28 @@ void  Zero_XYZ(double X_target, double Y_target, double Z_target)
 		l = (pow(upper_arm_lenght, 2) - pow(also_arm_lenght_XZ, 2) + pow(d, 2))/(2*d);
 		h = sqrt(pow(upper_arm_lenght, 2) - pow(l, 2));
 
-		Arm_joint_X = l*((X_target_forgatott+effektor_offset) - motor_offset)/d + h*(Z_target - motor_height)/d + motor_offset;
-		Arm_joint_Z = l*((Z_target - motor_height)/d + h*(X_target_forgatott+effektor_offset) - motor_offset)/d + motor_height;
+		Arm_joint_X = l*((X_target_forgatott+effektor_offset) - motor_offset)/d - h*(Z_target - motor_height)/d + motor_offset;
+		Arm_joint_Z = (l*((Z_target - motor_height)/d) + (h*(X_target_forgatott+effektor_offset) - motor_offset)/d) + motor_height;
 
-		Theta2 =40000 * atan2((Arm_joint_Z-motor_height),(Arm_joint_X-motor_offset)) /(2*PI);
+		Theta2 =atan2((Arm_joint_Z-motor_height),(Arm_joint_X-motor_offset)) *(40000/(2*PI));
+
+		sprintf(tx_buff, " Theta0: %f \r\n", Theta0);
+		UART_Out(huart1, tx_buff);
+		sprintf(tx_buff, " Theta1: %f \r\n", Theta1);
+		UART_Out(huart1, tx_buff);
+		sprintf(tx_buff, " Theta2: %f \r\n", Theta2);
+		UART_Out(huart1, tx_buff);
 
 	Set_M_Poz_0(Theta0);
 	Set_M_Poz_1(Theta1);
 	Set_M_Poz_2(Theta2);
+
+	sprintf(tx_buff, "\r\nNew motor 0 poz: %d\r\n",M_Poz_0());
+	UART_Out(huart1, tx_buff);
+	sprintf(tx_buff, "New motor 1 poz: %d\r\n",M_Poz_1());
+	UART_Out(huart1, tx_buff);
+	sprintf(tx_buff, "New motor 2 poz: %d\r\n",M_Poz_2());
+	UART_Out(huart1, tx_buff);
+
 }
 

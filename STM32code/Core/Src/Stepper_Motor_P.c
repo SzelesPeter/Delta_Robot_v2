@@ -191,30 +191,30 @@ uint32_t Get_a_MAX(void)
 	return a_MAX;
 }
 
-uint32_t M_Poz_0(void)
+int32_t M_Poz_0(void)
 {
 	return M_poz[0];
 }
 
-uint32_t M_Poz_1(void)
+int32_t M_Poz_1(void)
 {
 	return M_poz[1];
 }
 
-uint32_t M_Poz_2(void)
+int32_t M_Poz_2(void)
 {
 	return M_poz[2];
 }
 
-void Set_M_Poz_0(uint32_t tmp)
+void Set_M_Poz_0(int32_t tmp)
 {
 	M_poz[0] = tmp;
 }
-void Set_M_Poz_1(uint32_t tmp)
+void Set_M_Poz_1(int32_t tmp)
 {
 	M_poz[1] = tmp;
 }
-void Set_M_Poz_2(uint32_t tmp)
+void Set_M_Poz_2(int32_t tmp)
 {
 	M_poz[2] = tmp;
 }

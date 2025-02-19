@@ -143,8 +143,7 @@ int main(void)
   HAL_Delay(200);
   Relay_1_Reset();
 
-  Zero_XYZ(0, 0, 0);
-
+  Zero_XYZ(&huart1, 0, 0, 0);
   //HAL_TIM_OC_Start_IT(&htim2,TIM_CHANNEL_2);
   //Frequency_Out(&htim2,10000);
   //HAL_TIM_OC_Start_IT(&htim3,TIM_CHANNEL_4);

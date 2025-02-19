@@ -56,12 +56,12 @@ void Set_a_MAX(uint32_t tmp);
 uint32_t Get_f_MAX(void);
 uint32_t Get_f_MIN(void);
 uint32_t Get_a_MAX(void);
-uint32_t M_Poz_0(void);
-uint32_t M_Poz_1(void);
-uint32_t M_Poz_2(void);
-void Set_M_Poz_0(uint32_t);
-void Set_M_Poz_1(uint32_t);
-void Set_M_Poz_2(uint32_t);
+int32_t M_Poz_0(void);
+int32_t M_Poz_1(void);
+int32_t M_Poz_2(void);
+void Set_M_Poz_0(int32_t);
+void Set_M_Poz_1(int32_t);
+void Set_M_Poz_2(int32_t);
 
 
 #ifndef INC_STEPPER_MOTOR_P_H_
