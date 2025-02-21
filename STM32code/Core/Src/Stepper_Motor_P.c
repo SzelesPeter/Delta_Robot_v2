@@ -10,9 +10,9 @@
 
 #include "Stepper_Motor_P.h"
 
-uint32_t f_MAX = 40000;
+uint32_t f_MAX = 20000;
 uint32_t f_MIN = 100;
-uint32_t a_MAX = 100000;
+uint32_t a_MAX = 10000;
 
 uint32_t M_direction[3] =  {1,1,1};
 uint32_t M_f[3] =  {0,0,0};
@@ -95,7 +95,7 @@ void move (int32_t theta0_target,int32_t theta1_target,int32_t theta2_target,TIM
 
 	if(M_move_l[0]<0)
 	{
-		M_move_l[0] = ~M_move_l[0]+1;
+		M_move_l[0] = M_move_l[0]*(-1);
 		M_direction[0] = 0;
 		HAL_GPIO_WritePin(M0_DIR_PORT, M0_DIR_PIN, GPIO_PIN_SET);
 	}

@@ -39,13 +39,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_line   00025efa  00000000  00000000  00071d7b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00127180  00000000  00000000  00097c75  2**0
+ 18 .debug_str    0012717e  00000000  00000000  00097c75  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  001bedf5  2**0
+ 19 .comment      00000043  00000000  00000000  001bedf3  2**0
                   CONTENTS, READONLY
  20 .debug_frame  00009354  00000000  00000000  001bee38  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000069  00000000  00000000  001c818c  2**0
+ 21 .debug_line_str 00000067  00000000  00000000  001c818c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -5933,7 +5933,7 @@ void move (int32_t theta0_target,int32_t theta1_target,int32_t theta2_target,TIM
  8003d9e:	2b00      	cmp	r3, #0
  8003da0:	da0d      	bge.n	8003dbe <move+0x56>
 	{
-		M_move_l[0] = ~M_move_l[0]+1;
+		M_move_l[0] = M_move_l[0]*(-1);
  8003da2:	4b68      	ldr	r3, [pc, #416]	@ (8003f44 <move+0x1dc>)
  8003da4:	681b      	ldr	r3, [r3, #0]
  8003da6:	425b      	negs	r3, r3
